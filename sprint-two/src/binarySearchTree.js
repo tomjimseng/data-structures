@@ -15,7 +15,6 @@ BinarySearchTree.insert = function(value) {
 	  if (n.value < value) {
 		if (position.right === null) {
 		  position.right = BinarySearchTree(value);
-		  return;
 		} else {
 		  position = position.right;
 		  insertNode(position);
@@ -23,15 +22,12 @@ BinarySearchTree.insert = function(value) {
 		} else {
 		if (position.left === null) {
 		  position.left = BinarySearchTree(value);
-		  return;
 		} else {
 		  position = position.left;
 		  insertNode(position);
 		}
 	}
-  }
-
-
+	}
 	insertNode(position);
 };
 
@@ -49,16 +45,16 @@ BinarySearchTree.contains = function(target) {
   }
 };
 
-BinarySearchTree.depthFirstLog = function(func) {
-	
-	func(this.value);
+BinarySearchTree.depthFirstLog = function(callback) {
+
+	callback(this.value);
 
 	if (this.left !== null) {
-		this.left.depthFirstLog(this.value);
+		this.left.depthFirstLog(callback);
 	}
 
 	if (this.right !== null) {
-		this.left.depthFirstLog(this.value);
+		this.right.depthFirstLog(callback);
 	}
 
 };
